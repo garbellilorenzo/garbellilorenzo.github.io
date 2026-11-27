@@ -67,9 +67,21 @@
 
   // Contatti
   set("contact-text", esc(S.contact.text));
-  $("email").forEach((el) => {
-    el.textContent = S.contact.email;
-    el.href = `mailto:${S.contact.email}`;
+  // L'email viene composta solo al clic, così non compare nel testo della pagina
+  $("email").forEach((btn) => {
+    btn.addEventListener(
+      "click",
+      () => {
+        const addr = [S.contact.email.user, S.contact.email.domain].join(String.fromCharCode(64));
+        const a = document.createElement("a");
+        a.className = "contact__email";
+        a.href = "mailto:" + addr;
+        a.textContent = addr;
+        btn.replaceWith(a);
+        a.focus();
+      },
+      { once: true }
+    );
   });
   set(
     "links",

@@ -68,7 +68,9 @@ window.SITE = {
 
   contact: {
     text: "Hai un progetto, un'opportunità o vuoi semplicemente fare due chiacchiere? Scrivimi.",
-    email: "lorenzo.garbelli@studenti.univr.it",
+    // L'email è divisa in due parti così i bot che cercano "nome@dominio" non la trovano.
+    // Viene mostrata solo quando il visitatore clicca "Mostra email".
+    email: { user: "lorenzo.garbelli", domain: "studenti.univr.it" },
     links: [
       { label: "GitHub", url: "https://github.com/garbellilorenzo" },
       { label: "LinkedIn", url: "https://www.linkedin.com/in/lorenzo-garbelli-76625b242/" },
